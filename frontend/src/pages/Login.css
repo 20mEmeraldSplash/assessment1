@@ -46,6 +46,49 @@
   border-color: #007bff;
 }
 
+.password-group {
+  position: relative;
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrapper input {
+  padding-right: 2.5rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  transition: color 0.2s;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.password-toggle:hover {
+  color: #333;
+}
+
+.password-toggle:focus {
+  outline: none;
+}
+
+.password-toggle i {
+  font-size: 1rem;
+}
+
 .error-message {
   background-color: #f8d7da;
   color: #721c24;
@@ -77,16 +120,4 @@
   cursor: not-allowed;
 }
 
-.login-hint {
-  margin-top: 1.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #eee;
-  font-size: 0.85rem;
-  color: #666;
-  text-align: center;
-}
-
-.login-hint p {
-  margin: 0.25rem 0;
-}
 
