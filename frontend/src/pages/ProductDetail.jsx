@@ -13,6 +13,7 @@ const ProductDetail = () => {
   const [error, setError] = useState('');
   const [quantity, setQuantity] = useState(1);
   const [addingToCart, setAddingToCart] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
   const { isAuthenticated } = useAuth();
   const { addToCart } = useCart();
@@ -20,6 +21,15 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchProduct();
   }, [id]);
+
+  useEffect(() => {
+    if (product?.images && product.images.length > 0) {
+      const img = new Image();
+      img.onload = () => setImageLoaded(true);
+      img.onerror = () => setImageError(true);
+      img.src = product.images[0];
+    }
+  }, [product]);
 
   const fetchProduct = async () => {
     try {
@@ -81,11 +91,10 @@ const ProductDetail = () => {
       
       <div className="product-detail">
         <div className="product-detail-image">
-          {product.images && product.images.length > 0 && !imageError ? (
+          {product.images && product.images.length > 0 && imageLoaded && !imageError ? (
             <img 
               src={product.images[0]} 
               alt={product.name}
-              onError={() => setImageError(true)}
             />
           ) : (
             <div className="product-image-placeholder">📦</div>
